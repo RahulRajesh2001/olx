@@ -1,31 +1,29 @@
-// App.jsx
+import React,{useContext} from 'react'
+import {BrowserRouter, Routes, Route, Link} from "react-router-dom";
+import Home from './pages/Home.jsx'
+import LoginPage from './pages/Login.jsx'
+import  SignupPage from './pages/Signup.jsx'
+import CreatePage from './pages/CreatePage.jsx';
+import Logout from './components/logout/Logout.jsx';
 
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+export const loginContext=React.createContext();
 
 const App = () => {
-  const [message, setMessage] = useState('');
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('/api/v1/');
-        setMessage(response.data.message);
-      } catch (error) {
-        console.error('Error fetching data:', error);
-      }
-    };
-
-    console.log(message)
-
-    fetchData();
-  }, []);
 
   return (
-    <div>
-      <p>{message}</p>
-    </div>
-  );
-};
+    <loginContext.Provider value={true}>
+    <BrowserRouter>
+    <Routes>
+      <Route extact path='/' element={<Home/>}></Route>
+      <Route path='/login' element={<LoginPage/>}></Route>
+      <Route path="/signup" element={<SignupPage/>}></Route>
+    <Route path='/addProduct' element={<CreatePage/>}></Route>
+    <Route path='/logout' element={<Logout/>}></Route>
+    </Routes>
+    </BrowserRouter>
+    </loginContext.Provider>
 
-export default App;
+  )
+}
+
+export default App

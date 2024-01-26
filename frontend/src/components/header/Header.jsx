@@ -1,12 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import './header.css'
 import OlxLogo from '../../assets/OlxLogo.jsx'
 import Search from '../../assets/Search.jsx'
 import Arrow from '../../assets/Arrow.jsx'
 import SellButton from '../../assets/SellButton.jsx'
 import SellButtonPlus from '../../assets/SellButtonPlus.jsx'
+import { loginContext } from '../../App.jsx'
 
 const Header = () => {
+  let islogin=useContext(loginContext)
+  const logoutHandler=()=>{
+    islogin=false;
+  }
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -34,7 +39,11 @@ const Header = () => {
           <Arrow></Arrow>
         </div>
         <div className="loginPage">
-          <span>Login</span>
+          <a className='loginlink' href='/login'>Login</a>
+          <hr />
+        </div>
+        <div className="loginPage">
+          <a className='loginlink' href='/logout' onClick={logoutHandler}>Logout</a>
           <hr />
         </div>
 
@@ -42,7 +51,7 @@ const Header = () => {
           <SellButton></SellButton>
           <div className="sellMenuContent">
             <SellButtonPlus></SellButtonPlus>
-            <span>SELL</span>
+            <a href='/addProduct'>SELL</a>
           </div>
         </div>
       </div>

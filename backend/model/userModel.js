@@ -12,6 +12,10 @@ const userSchema = new Schema({
     required: true,
     unique: true,
   },
+  phone: {
+    type: String, 
+    required: true,
+  },
   password: {
     type: String,
     required: true,
@@ -25,6 +29,7 @@ const userSchema = new Schema({
     type: Date,
     default: Date.now,
   },
+  tokens: [{ type: String }],
 })
 
 const UserModel= mongoose.model('User', userSchema)

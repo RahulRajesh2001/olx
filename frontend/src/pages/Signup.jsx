@@ -1,7 +1,7 @@
 import React from 'react'
 import Signup from '../components/signup/Signup.jsx'
 
-const Signup = () => {
+const Signup_Page = () => {
   return (
     <div>
         <Signup/>
@@ -9,4 +9,4 @@ const Signup = () => {
   )
 }
 
-export default Signup
+export default Signup_Page

@@ -1,5 +1,6 @@
 import express from 'express'
 import dotenv from 'dotenv'
+import cors from 'cors';
 import bodyParser from 'body-parser';
 import mongoConnect from './config/db.js';
 
@@ -7,6 +8,7 @@ import mongoConnect from './config/db.js';
 dotenv.config()
 const PORT = process.env.PORT || 5000;
 const app = express()
+app.use(cors());
 
 mongoConnect()
 //body parser
