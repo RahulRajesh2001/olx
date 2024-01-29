@@ -8,10 +8,8 @@ import SellButtonPlus from '../../assets/SellButtonPlus.jsx'
 import { loginContext } from '../../App.jsx'
 
 const Header = () => {
-  let islogin=useContext(loginContext)
-  const logoutHandler=()=>{
-    islogin=false;
-  }
+  
+  const {handleLogout } = useContext(loginContext);
   return (
     <div className="headerParentDiv">
       <div className="headerChildDiv">
@@ -43,7 +41,7 @@ const Header = () => {
           <hr />
         </div>
         <div className="loginPage">
-          <a className='loginlink' href='/logout' onClick={logoutHandler}>Logout</a>
+          <a className='loginlink' href='/logout' onClick={handleLogout}>Logout</a>
           <hr />
         </div>
 

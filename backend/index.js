@@ -1,8 +1,7 @@
 import express from 'express'
 import dotenv from 'dotenv'
-import cors from 'cors';
-import bodyParser from 'body-parser';
 import mongoConnect from './config/db.js';
+import cors from 'cors'
 
 
 dotenv.config()
@@ -11,9 +10,10 @@ const app = express()
 app.use(cors());
 
 mongoConnect()
+
 //body parser
-app.use(bodyParser.json())
-app.use(bodyParser.urlencoded({ extended: true }))
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 import  productRoutes from './routes/productRoutes.js'
 import userRoutes from './routes/userRoutes.js'
@@ -26,4 +26,3 @@ app.use('/api/v1',userRoutes)
 app.listen(PORT, () => {
   console.log(`Server started on the port ${PORT} `)
 })
-

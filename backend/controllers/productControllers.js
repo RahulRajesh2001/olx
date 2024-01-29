@@ -25,20 +25,14 @@ export const getAllProducts = async (req, res) => {
 
 export const addProducts = async (req, res) => {
   try {
-    const { name, price, category, date, sellerName, phoneNumber } = req.body;
+    const { name, price, category, date, sellerName, phoneNumber,file } = req.body;
 
-    // Parsing the buffer
-    const extName = path.extname(req.file.originalname).toString();
-    const file64 = parser.format(extName, req.file.buffer);
 
-    // Upload the file to Cloudinary
-    const result = await cloudinary.uploader.upload(file64);
-
-    console.log("Cloudinary response:", result);
+    console.log(file)
+  
 
     const product = new ProductModel({
       name,
-      image: result.url, 
       price,
       category,
       date,
